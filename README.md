@@ -12,7 +12,7 @@
 Get the code:
 
 ```
-git clone git@github.com:chainerist/web3j-unit-test-example.git
+git clone git@github.com:chainerist/demo-web3j-smart-contract-pattern.git
 
 ```
 
