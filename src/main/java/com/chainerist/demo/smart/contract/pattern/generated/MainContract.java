@@ -1,5 +1,8 @@
 package com.chainerist.demo.smart.contract.pattern.generated;
 
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Address;
 import org.web3j.abi.datatypes.Function;
@@ -13,10 +16,6 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
-
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * <p>Auto generated code.
@@ -81,7 +80,7 @@ public class MainContract extends Contract {
     public RemoteFunctionCall<TransactionReceipt> upgrade(String _businesslogic) {
         final Function function = new Function(
                 FUNC_UPGRADE, 
-                Arrays.<Type>asList(new Address(160, _businesslogic)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(160, _businesslogic)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

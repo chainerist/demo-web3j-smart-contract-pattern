@@ -2,6 +2,11 @@ package com.chainerist.demo.smart.contract.pattern.generated;
 
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import org.web3j.abi.EventEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Address;
@@ -20,12 +25,6 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * <p>Auto generated code.
@@ -67,9 +66,9 @@ public class DataStorage extends Contract {
     }
 
     public static List<CreateAgeEventEventResponse> getCreateAgeEventEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = staticExtractEventParametersWithLog(CREATEAGEEVENT_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = staticExtractEventParametersWithLog(CREATEAGEEVENT_EVENT, transactionReceipt);
         ArrayList<CreateAgeEventEventResponse> responses = new ArrayList<CreateAgeEventEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             CreateAgeEventEventResponse typedResponse = new CreateAgeEventEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.age = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -83,7 +82,7 @@ public class DataStorage extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, CreateAgeEventEventResponse>() {
             @Override
             public CreateAgeEventEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(CREATEAGEEVENT_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(CREATEAGEEVENT_EVENT, log);
                 CreateAgeEventEventResponse typedResponse = new CreateAgeEventEventResponse();
                 typedResponse.log = log;
                 typedResponse.age = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -109,7 +108,7 @@ public class DataStorage extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAge(BigInteger newAge) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETAGE, 
-                Arrays.<Type>asList(new Uint256(newAge)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(newAge)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

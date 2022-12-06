@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+app:
+  block-chain-network:
+        rpc-url: http://localhost:8487
+        wallet-password: 123456
+        wallet-path: wallet.json

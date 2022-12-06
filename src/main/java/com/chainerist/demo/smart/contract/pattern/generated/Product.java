@@ -2,6 +2,12 @@ package com.chainerist.demo.smart.contract.pattern.generated;
 
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
 import org.web3j.abi.EventEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Address;
@@ -24,13 +30,6 @@ import org.web3j.tuples.generated.Tuple5;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Callable;
 
 /**
  * <p>Auto generated code.
@@ -82,9 +81,9 @@ public class Product extends Contract {
     }
 
     public static List<ProductCreatedEventResponse> getProductCreatedEvents(TransactionReceipt transactionReceipt) {
-        List<EventValuesWithLog> valueList = staticExtractEventParametersWithLog(PRODUCTCREATED_EVENT, transactionReceipt);
+        List<Contract.EventValuesWithLog> valueList = staticExtractEventParametersWithLog(PRODUCTCREATED_EVENT, transactionReceipt);
         ArrayList<ProductCreatedEventResponse> responses = new ArrayList<ProductCreatedEventResponse>(valueList.size());
-        for (EventValuesWithLog eventValues : valueList) {
+        for (Contract.EventValuesWithLog eventValues : valueList) {
             ProductCreatedEventResponse typedResponse = new ProductCreatedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.id = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -102,7 +101,7 @@ public class Product extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProductCreatedEventResponse>() {
             @Override
             public ProductCreatedEventResponse apply(Log log) {
-                EventValuesWithLog eventValues = extractEventParametersWithLog(PRODUCTCREATED_EVENT, log);
+                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PRODUCTCREATED_EVENT, log);
                 ProductCreatedEventResponse typedResponse = new ProductCreatedEventResponse();
                 typedResponse.log = log;
                 typedResponse.id = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -124,7 +123,7 @@ public class Product extends Contract {
 
     public RemoteFunctionCall<String> bytes32ToString(byte[] _bytes32) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BYTES32TOSTRING, 
-                Arrays.<Type>asList(new Bytes32(_bytes32)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(_bytes32)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -132,9 +131,9 @@ public class Product extends Contract {
     public RemoteFunctionCall<TransactionReceipt> change_status(String _owner, BigInteger _index, BigInteger _pro_state) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CHANGE_STATUS, 
-                Arrays.<Type>asList(new Utf8String(_owner),
-                new Uint256(_index),
-                new Uint8(_pro_state)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner), 
+                new org.web3j.abi.datatypes.generated.Uint256(_index), 
+                new org.web3j.abi.datatypes.generated.Uint8(_pro_state)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -142,19 +141,19 @@ public class Product extends Contract {
     public RemoteFunctionCall<TransactionReceipt> createProduct(String _owner, String _name, String _serialNo, BigInteger _price, BigInteger _pro_state) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CREATEPRODUCT, 
-                Arrays.<Type>asList(new Utf8String(_owner),
-                new Utf8String(_name),
-                new Utf8String(_serialNo),
-                new Uint256(_price),
-                new Uint8(_pro_state)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner), 
+                new org.web3j.abi.datatypes.Utf8String(_name), 
+                new org.web3j.abi.datatypes.Utf8String(_serialNo), 
+                new org.web3j.abi.datatypes.generated.Uint256(_price), 
+                new org.web3j.abi.datatypes.generated.Uint8(_pro_state)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple5<BigInteger, String, String, BigInteger, BigInteger>> getProduct(String _address, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPRODUCT, 
-                Arrays.<Type>asList(new Utf8String(_address),
-                new Uint256(index)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_address), 
+                new org.web3j.abi.datatypes.generated.Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint8>() {}));
         return new RemoteFunctionCall<Tuple5<BigInteger, String, String, BigInteger, BigInteger>>(function,
                 new Callable<Tuple5<BigInteger, String, String, BigInteger, BigInteger>>() {
@@ -173,7 +172,7 @@ public class Product extends Contract {
 
     public RemoteFunctionCall<BigInteger> getProductCount(String _owner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPRODUCTCOUNT, 
-                Arrays.<Type>asList(new Utf8String(_owner)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -187,7 +186,7 @@ public class Product extends Contract {
 
     public RemoteFunctionCall<byte[]> stringToBytes32(String source) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_STRINGTOBYTES32, 
-                Arrays.<Type>asList(new Utf8String(source)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(source)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }

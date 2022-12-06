@@ -1,5 +1,10 @@
 package com.chainerist.demo.smart.contract.pattern.generated;
 
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Bool;
 import org.web3j.abi.datatypes.Function;
@@ -17,12 +22,6 @@ import org.web3j.tuples.generated.Tuple5;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
-
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Callable;
 
 /**
  * <p>Auto generated code.
@@ -75,7 +74,7 @@ public class ProductV3 extends Contract {
 
     public RemoteFunctionCall<String> bytes32ToString(byte[] _bytes32) {
         final Function function = new Function(FUNC_BYTES32TOSTRING, 
-                Arrays.<Type>asList(new Bytes32(_bytes32)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(_bytes32)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -83,9 +82,9 @@ public class ProductV3 extends Contract {
     public RemoteFunctionCall<TransactionReceipt> change_status(String _owner, BigInteger _index, BigInteger _pro_state) {
         final Function function = new Function(
                 FUNC_CHANGE_STATUS, 
-                Arrays.<Type>asList(new Utf8String(_owner),
-                new Uint256(_index),
-                new Uint8(_pro_state)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner), 
+                new org.web3j.abi.datatypes.generated.Uint256(_index), 
+                new org.web3j.abi.datatypes.generated.Uint8(_pro_state)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -93,19 +92,19 @@ public class ProductV3 extends Contract {
     public RemoteFunctionCall<TransactionReceipt> createProduct(String _owner, String _name, String _serialNo, BigInteger _price, BigInteger _pro_state) {
         final Function function = new Function(
                 FUNC_CREATEPRODUCT, 
-                Arrays.<Type>asList(new Utf8String(_owner),
-                new Utf8String(_name),
-                new Utf8String(_serialNo),
-                new Uint256(_price),
-                new Uint8(_pro_state)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner), 
+                new org.web3j.abi.datatypes.Utf8String(_name), 
+                new org.web3j.abi.datatypes.Utf8String(_serialNo), 
+                new org.web3j.abi.datatypes.generated.Uint256(_price), 
+                new org.web3j.abi.datatypes.generated.Uint8(_pro_state)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple5<BigInteger, String, String, BigInteger, BigInteger>> getProduct(String _address, BigInteger index) {
         final Function function = new Function(FUNC_GETPRODUCT, 
-                Arrays.<Type>asList(new Utf8String(_address),
-                new Uint256(index)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_address), 
+                new org.web3j.abi.datatypes.generated.Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint8>() {}));
         return new RemoteFunctionCall<Tuple5<BigInteger, String, String, BigInteger, BigInteger>>(function,
                 new Callable<Tuple5<BigInteger, String, String, BigInteger, BigInteger>>() {
@@ -124,7 +123,7 @@ public class ProductV3 extends Contract {
 
     public RemoteFunctionCall<BigInteger> getProductCount(String _owner) {
         final Function function = new Function(FUNC_GETPRODUCTCOUNT, 
-                Arrays.<Type>asList(new Utf8String(_owner)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_owner)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -154,7 +153,7 @@ public class ProductV3 extends Contract {
 
     public RemoteFunctionCall<byte[]> stringToBytes32(String source) {
         final Function function = new Function(FUNC_STRINGTOBYTES32, 
-                Arrays.<Type>asList(new Utf8String(source)),
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(source)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
