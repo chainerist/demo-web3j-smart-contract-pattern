@@ -1,0 +1,1 @@
+# demo-web3j-smart-contract-pattern
