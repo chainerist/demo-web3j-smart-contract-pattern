@@ -13,6 +13,7 @@
     </parent>
 
 
+
     <groupId>com.chainerist.demo.smart.contract.pattern</groupId>
     <artifactId>demo-web3j-smart-contract-pattern</artifactId>
     <version>1.0-SNAPSHOT</version>
