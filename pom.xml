@@ -13,7 +13,6 @@
     </parent>
 
 
-
     <groupId>com.chainerist.demo.smart.contract.pattern</groupId>
     <artifactId>demo-web3j-smart-contract-pattern</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -41,6 +40,40 @@
             <artifactId>core</artifactId>
             <version>${org.web3j.core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${org.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>web3j-unit</artifactId>
+            <version>${org.web3j.core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.beust</groupId>
+                    <artifactId>klaxon</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>tech.pegasys.discovery</groupId>
+                    <artifactId>discovery</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.consensys.services</groupId>
+                    <artifactId>quorum-mainnet-launcher</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.splunk.logging</groupId>
+                    <artifactId>splunk-library-javalogging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>klaxon</artifactId>
+            <version>${com.beust.klaxon.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,6 +82,35 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.web3j</groupId>
+                <artifactId>web3j-maven-plugin</artifactId>
+                <version>${org.web3j.core.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources-web3j</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-sources</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>com.chainerist.demo.smart.contract.pattern.generated</packageName>
+                            <sourceDestination>${basedir}/src/main/java</sourceDestination>
+                            <soliditySourceFiles>
+                                <directory>${basedir}/src/main/resources/contracts</directory>
+                                <includes>
+                                    <include>**/*.sol</include>
+                                </includes>
+                            </soliditySourceFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
