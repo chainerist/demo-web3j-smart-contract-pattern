@@ -17,6 +17,7 @@ git clone git@github.com:chainerist/demo-web3j-smart-contract-pattern.git
 
 ```
 
+
 ## Install dependencies:
 
 ```
