@@ -7,6 +7,7 @@
 1. ProxyPattern
 2. InterfacePattern
 3. DataStoragePattern
+   
 
 ## Setup
 Get the code:
